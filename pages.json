@@ -1,0 +1,335 @@
+{
+    "pages": [{
+            "path": "pages/screen/open_screen",
+            "style": {
+                "navigationBarTitleText": "",
+                "navigationStyle": "custom"
+            }
+        },
+        {
+            "path": "pages/index/index",
+            "style": {
+                "navigationBarTitleText": "团团校园圈",
+                "navigationStyle": "custom",
+                "enablePullDownRefresh": true
+            }
+        },
+        {
+            "path": "pages/message/message",
+            "style": {
+                "navigationBarTitleText": "消息",
+                "disableScroll": true,
+                "app-plus": {
+                    "bounce": "none"
+                }
+            }
+        },
+        {
+            "path": "pages/add/add",
+            "style": {
+                "navigationBarTitleText": "发帖子",
+                "navigationBarBackgroundColor": "#FFFFFF"
+            }
+        },
+        {
+            "path": "pages/playmate/playmate",
+            "style": {
+                "navigationBarTitleText": "搭子",
+                "navigationStyle": "custom",
+                "enablePullDownRefresh": true
+            }
+        },
+        {
+            "path": "pages/personal/personal",
+            "style": {
+                "navigationBarTitleText": "我的"
+            }
+        },
+        {
+            "path": "pages/carddetail/carddetail",
+            "style": {
+                "navigationBarTitleText": "正文"
+            }
+        },
+        {
+            "path": "pages/chooseschool/chooseschool",
+            "style": {
+                "navigationBarTitleText": "选择学校"
+            }
+        }
+    ],
+    "subPackages": [{
+            "root": "package-playmate",
+            "name": "playmate",
+            "pages": [{
+                    "path": "playmate-detail/playmate-detail",
+                    "style": {
+                        "navigationBarTitleText": "搭况"
+                    }
+                },
+                {
+                    "path": "playmate-add/playmate-add",
+                    "style": {
+                        "navigationBarTitleText": "开始凑搭",
+                        "navigationBarBackgroundColor": "#FFFFFF"
+                    }
+                }
+            ]
+        },
+        {
+            "root": "package-user",
+            "name": "user",
+            "pages": [{
+                    "path": "my-home/my-home",
+                    "style": {
+                        "navigationBarTitleText": "我的主页",
+                        "navigationBarBackgroundColor": "#47b5af"
+                    }
+                },
+                {
+                    "path": "my-message/my-message",
+                    "style": {
+                        "navigationBarTitleText": "我的"
+                    }
+                },
+                {
+                    "path": "my-update/my-update",
+                    "style": {
+                        "navigationBarTitleText": "编辑资料"
+                    }
+                },
+                {
+                    "path": "my-info/my-info",
+                    "style": {
+                        "navigationBarTitleText": "个人资料",
+                        "navigationBarBackgroundColor": "#2caba6"
+                    }
+                },
+                {
+                    "path": "my-nike/my-nike",
+                    "style": {
+                        "navigationBarTitleText": "修改昵称"
+                    }
+                },
+                {
+                    "path": "my-background/my-background",
+                    "style": {
+                        "navigationBarTitleText": "修改背景图"
+                    }
+                },
+                {
+                    "path": "my-about/my-about",
+                    "style": {
+                        "navigationBarTitleText": "关于我们"
+                    }
+                },
+                {
+                    "path": "my-follow/my-follow",
+                    "style": {
+                        "navigationBarTitleText": "关注"
+                    }
+                },
+                {
+                    "path": "my-phone/my-phone",
+                    "style": {
+                        "navigationBarTitleText": "授权手机号"
+                    }
+                }
+            ]
+        },
+        {
+            "root": "package-verify",
+            "name": "verify",
+            "pages": [{
+                    "path": "school-verify/school-verify",
+                    "style": {
+                        "navigationBarTitleText": "校园认证"
+                    }
+                },
+                {
+                    "path": "Identity-verify/Identity-verify",
+                    "style": {
+                        "navigationBarTitleText": "身份认证"
+                    }
+                },
+                {
+                    "path": "open-official/open-official",
+                    "style": {
+                        "navigationBarTitleText": "官方认证"
+                    }
+                },
+                {
+                    "path": "open-company/open-company",
+                    "style": {
+                        "navigationBarTitleText": "企业认证"
+                    }
+                },
+                {
+                    "path": "company-login/company-login",
+                    "style": {
+                        "navigationBarTitleText": "登录"
+                    }
+                }
+            ]
+        },
+        {
+            "root": "package-account",
+            "name": "account",
+            "pages": [{
+                    "path": "switch-accounts/switch-accounts",
+                    "style": {
+                        "navigationBarTitleText": "我的账号"
+                    }
+                },
+                {
+                    "path": "switch-nike/switch-nike",
+                    "style": {
+                        "navigationBarTitleText": "我的昵称"
+                    }
+                }
+            ]
+        },
+        {
+            "root": "package-agreement",
+            "name": "agreement",
+            "pages": [{
+                    "path": "openWeb/openWeb",
+                    "style": {
+                        "navigationBarTitleText": ""
+                    }
+                },
+                {
+                    "path": "community-norms/community-norms",
+                    "style": {
+                        "navigationBarTitleText": "社区规范"
+                    }
+                },
+                {
+                    "path": "privacy-agreement/privacy-agreement",
+                    "style": {
+                        "navigationBarTitleText": "隐私保护协议"
+                    }
+                }
+            ]
+        },
+        {
+            "root": "package-content",
+            "name": "content",
+            "pages": [{
+                    "path": "search/search",
+                    "style": {
+                        "navigationBarTitleText": "搜索"
+                    }
+                },
+                {
+                    "path": "poster-canvas/poster-canvas",
+                    "style": {
+                        "navigationBarTitleText": "分享海报"
+                    }
+                },
+                {
+                    "path": "group-content/group-content",
+                    "style": {
+                        "navigationBarTitleText": ""
+                    }
+                },
+                {
+                    "path": "partition/partition",
+                    "style": {
+                        "navigationBarTitleText": "选择分区"
+                    }
+                },
+                {
+                    "path": "partition-list/partition-list",
+                    "style": {
+                        "navigationBarTitleText": ""
+                    }
+                }
+            ]
+        },
+        {
+            "root": "package-course",
+            "name": "course",
+            "pages": [{
+                    "path": "timetable/index",
+                    "style": {
+                        "navigationBarTitleText": "课程表"
+                    }
+                },
+                {
+                    "path": "timetable/edit",
+                    "style": {
+                        "navigationBarTitleText": "编辑课程"
+                    }
+                },
+                {
+                    "path": "timetable/import",
+                    "style": {
+                        "navigationBarTitleText": "导入课程"
+                    }
+                }
+            ]
+        }
+    ],
+    "preloadRule": {
+        "pages/index/index": {
+            "packages": ["content"],
+            "network": "all"
+        },
+        "pages/playmate/playmate": {
+            "packages": ["playmate"],
+            "network": "all"
+        },
+        "pages/personal/personal": {
+            "packages": ["user"],
+            "network": "all"
+        },
+        "package-course/timetable/index": {
+            "packages": ["course"],
+            "network": "all"
+        }
+    },
+    "optimization": {
+        "subPackages": true
+    },
+    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "uni-app",
+        "navigationBarBackgroundColor": "#94D4D2",
+        "backgroundColor": "#94D4D2"
+    },
+    "tabBar": {
+        "color": "#999999",
+        "selectedColor": "#999999",
+        "borderStyle": "black",
+        "backgroundColor": "#FFFFFF",
+        "list": [{
+            "pagePath": "pages/index/index",
+            "iconPath": "/static/img/tabbar/circle.png",
+            "selectedIconPath": "/static/img/tabbar/circleactive.png",
+            "text": "校园圈"
+        }, {
+            "pagePath": "pages/message/message",
+            "iconPath": "/static/img/tabbar/message.png",
+            "selectedIconPath": "/static/img/tabbar/messageactive.png",
+            "text": "消息"
+        }, {
+            "pagePath": "pages/add/add",
+            "iconPath": "/static/img/tabbar/add.png",
+            "selectedIconPath": "/static/img/tabbar/addactive.png",
+            "text": "新建"
+        }, {
+            "pagePath": "pages/playmate/playmate",
+            "iconPath": "/static/img/tabbar/playmate.png",
+            "selectedIconPath": "/static/img/tabbar/playmateactive.png",
+            "text": "凑搭"
+        }, {
+            "pagePath": "pages/personal/personal",
+            "iconPath": "/static/img/tabbar/personal.png",
+            "selectedIconPath": "/static/img/tabbar/personalactive.png",
+            "text": "我的"
+        }]
+    },
+    "uniIdRouter": {},
+    "shareTimeline": true
+}

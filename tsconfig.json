@@ -1,0 +1,35 @@
+{
+	"compilerOptions": {
+		"target": "es2020",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"strict": true,
+		"noImplicitAny": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"declaration": false,
+		"baseUrl": ".",
+		"types": ["node"],
+		"paths": {
+			"@/*": ["./*"]
+		},
+		"lib": ["es2020", "dom"],
+		"sourceMap": false,
+		"experimentalDecorators": true
+	},
+	"include": [
+		"common/**/*.ts",
+		"api/**/*.ts",
+		"store/**/*.ts",
+		"libs/**/*.ts",
+		"types/**/*.d.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"unpackage",
+		"dist",
+		"uni_modules"
+	]
+}

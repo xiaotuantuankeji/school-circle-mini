@@ -1,0 +1,31 @@
+{
+	"id": "school-wechat",
+	"name": "",
+	"version": "0.0.1",
+	"description": "团团校园圈",
+	"keywords": [
+		"团团",
+		"school-wechat",
+		"校园圈"
+	],
+	"scripts": {
+		"lint": "eslint --ext .js,.ts,.vue .",
+		"lint:fix": "eslint --ext .js,.ts,.vue . --fix",
+		"format": "prettier --write \"**/*.{js,ts,vue,css,scss,json,md}\"",
+		"format:check": "prettier --check \"**/*.{js,ts,vue,css,scss,json,md}\"",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.29.0",
+		"@babel/eslint-parser": "^7.28.6",
+		"@babel/preset-env": "^7.29.2",
+		"@types/node": "^25.5.0",
+		"@typescript-eslint/eslint-plugin": "^8.57.2",
+		"@typescript-eslint/parser": "^8.57.2",
+		"eslint": "^8.57.1",
+		"eslint-config-prettier": "^9.1.2",
+		"eslint-plugin-vue": "^9.33.0",
+		"prettier": "^3.8.1",
+		"typescript": "^5.9.3"
+	}
+}
