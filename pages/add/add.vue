@@ -1341,6 +1341,13 @@
         bottom: 20rpx;
     }
 
+    /* #ifdef H5 */
+    /* H5 tabBar 高度约 100rpx，按钮需要上移避免被遮挡 */
+    .sendCardButtonView {
+        bottom: 120rpx;
+    }
+    /* #endif */
+
     .sendCardButton {
         background: #000000;
         border-radius: 40rpx;

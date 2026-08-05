@@ -28,7 +28,12 @@ import util from './common/util'
 // import uuidData from './common/uuid_data'
 // import errCodeMsg from './common/err_code_msg'
 // import toPage from './common/gotoPage'
+// #ifndef H5
 import wechatAuth from './libs/wechat_auth'
+// #endif
+// #ifdef H5
+import wechatAuth from './libs/wechat_auth_h5'
+// #endif
 // import wechatShare from './libs/wechat_share'
 // import wechatLocation from './libs/wechat_location'
 

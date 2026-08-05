@@ -120,7 +120,12 @@ function handleHttpError(statusCode: number, data: any): void {
 		storage.clear()
 		uni.showToast({ title: message, icon: 'none' })
 		setTimeout(() => {
+			// #ifdef H5
+			uni.redirectTo({ url: '/pages/login/login' })
+			// #endif
+			// #ifndef H5
 			uni.reLaunch({ url: '/pages/index/index' })
+			// #endif
 		}, 1500)
 		return
 	}

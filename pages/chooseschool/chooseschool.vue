@@ -19,6 +19,9 @@
         <top-background></top-background>
 
         <view class="contentInside">
+            <!-- #ifdef H5 -->
+            <view class="h5PageTitle">选择学校</view>
+            <!-- #endif -->
             <view class="topSearchView">
                 <view class="topSearchInputView">
                     <image class="topSearchInputImg" src="/static/img/other/search.png"></image>
@@ -98,7 +101,7 @@
 <script>
     import topBackground from '../../components/top-background/top-background.vue'
     export default {
-        comments: {
+        components: {
             topBackground
         },
         data() {
@@ -253,7 +256,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .content {
         width: 100%;
         background: linear-gradient(180deg, #94D4D2 0%, #F3F3F1 16%, #FFFFFF 100%);
@@ -423,6 +426,9 @@
 
     .schoolListTextView {
         padding: 10rpx 0;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
         font-family: Alibaba PuHuiTi 3.0, Alibaba PuHuiTi 30;
         font-weight: normal;
         font-size: 28rpx;
@@ -431,4 +437,36 @@
         font-style: normal;
         text-transform: none;
     }
+
+    /* #ifdef H5 */
+    /* H5 开发模式 view 默认 inline，需显式 block；元素选择器优先级低于 class，不会覆盖 flex 布局 */
+    view {
+        display: block;
+    }
+
+    .h5PageTitle {
+        font-family: Alibaba PuHuiTi 3.0, Alibaba PuHuiTi 30;
+        font-weight: 500;
+        font-size: 36rpx;
+        color: #000000;
+        line-height: 50rpx;
+        text-align: left;
+        margin-top: 20rpx;
+        margin-bottom: 20rpx;
+    }
+
+    .topSearchInput {
+        width: 88%;
+        height: 40rpx;
+        line-height: 40rpx;
+        margin-left: 22rpx;
+        padding: 0;
+        background: transparent;
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        font-size: 29rpx;
+        color: #000000;
+    }
+    /* #endif */
 </style>

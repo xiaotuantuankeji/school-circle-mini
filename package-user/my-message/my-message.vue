@@ -113,6 +113,7 @@
                 loginAvatar: '',
 
                 sort: '1',
+                menuSort: '',
 
                 dataList: [],
             }

@@ -73,7 +73,7 @@
     import verifySchool from '../../libs/verify_school'
 
     export default {
-        comments: {
+        components: {
             topBackground
         },
         data() {
@@ -87,7 +87,7 @@
                 lookNikeNameId: '',
 
                 searchValue: '',
-                changeValue: '0',
+                changeValue: 0,
 
                 followList: [],
 
@@ -132,11 +132,11 @@
                 this.searchSort()
             },
             searchSort() {
-                if (this.changeValue == '0') {
+                if (this.changeValue === 0) {
                     this.getMyFollowData()
-                } else if (this.changeValue == '1') {
+                } else if (this.changeValue === 1) {
                     this.getFollowMyData()
-                } else if (this.changeValue == '2') {
+                } else if (this.changeValue === 2) {
                     this.getMutualFollowData()
                 }
             },

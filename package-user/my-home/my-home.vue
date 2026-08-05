@@ -231,7 +231,7 @@
                     this.showStudentSort = this.loginStudentSort
                     this.showSchoolName = this.loginSchoolName
                     const identityInfoRespVOList = userInfo.identityInfoRespVOList
-                    if (identityInfoRespVOList.length > 0) {
+                    if (identityInfoRespVOList && identityInfoRespVOList.length > 0) {
                         if (identityInfoRespVOList[0].examineStatus == '2') {
                             this.showIdentityIconUrl = identityInfoRespVOList[0].identityIconName
                             this.showIdentityIconText = identityInfoRespVOList[0].remark
@@ -270,7 +270,7 @@
                     this.showStudentSort = userData.sort
                     this.showSchoolName = userData.schoolName
                     const identityInfoRespVOList = userData.identityInfoRespVOList
-                    if (identityInfoRespVOList.length > 0) {
+                    if (identityInfoRespVOList && identityInfoRespVOList.length > 0) {
                         if (identityInfoRespVOList[0].examineStatus == '2') {
                             this.showIdentityIconUrl = identityInfoRespVOList[0].identityIconName
                             this.showIdentityIconText = identityInfoRespVOList[0].remark
@@ -348,7 +348,7 @@
                     this.$api.getSendCardList(param).then(res => {
                         // console.log('getSendCardList succes res:' + JSON.stringify(res))
 
-                        this.cardList = res.data
+                        this.cardList = res.data || []
                         this.isFirstLoading = false
                     }).catch(res => {
                         // 失败进行的操作

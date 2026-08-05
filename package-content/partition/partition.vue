@@ -43,7 +43,7 @@
 <script>
     import topBackground from '../../components/top-background/top-background.vue'
     export default {
-        comments: {
+        components: {
             topBackground
         },
         data() {

@@ -29,18 +29,32 @@
             }
         },
         onLaunch: function() {
-            // this.startUnreadCountTimer()
-        },
-        onShow: function() {
-            this.getUnreadCount()
-            this.startUnreadCountTimer()
-            this.initWebSocket()
-        },
-        onLaunch: function() {
             // 监听登录成功事件
             uni.$on('loginSuccess', () => {
                 this.initWebSocket()
+                this.getUnreadCount()
+                this.startUnreadCountTimer()
             })
+        },
+        onShow: function() {
+            // #ifdef H5
+            // H5 下检查是否已登录，防止直接访问已缓存的页面
+            const token = this.$storage.token.get()
+            const userInfo = this.$storage.user.get()
+            if (!token || !userInfo || !userInfo.studentId) {
+                const pages = getCurrentPages()
+                const currentPage = pages.length > 0 ? pages[pages.length - 1] : null
+                const route = currentPage ? currentPage.route : ''
+                // 非登录/注册页才需要跳转
+                if (route && route !== 'pages/login/login' && route !== 'pages/register/register') {
+                    uni.redirectTo({ url: '/pages/login/login' })
+                    return
+                }
+            }
+            // #endif
+            this.getUnreadCount()
+            this.startUnreadCountTimer()
+            this.initWebSocket()
         },
         onHide: function() {
             this.stopUnreadCountTimer()
@@ -167,21 +181,28 @@
                             const total = commentCount + likeCount + collectCount + playmateCommentCount +
                                 playmateMemberCount + systemCount + listCount
                             console.log('getUnreadCount_total:' + total)
+                            // #ifndef H5
                             if (total > 0) {
                                 const badgeText = total > 99 ? '99+' : total.toString();
                                 uni.setTabBarBadge({
-                                    index: 1, // 消息tab的索引
-                                    text: badgeText
+                                    index: 1,
+                                    text: badgeText,
+                                    fail: () => {}
                                 });
                             } else {
                                 uni.removeTabBarBadge({
-                                    index: 1
+                                    index: 1,
+                                    fail: () => {}
                                 });
                             }
+                            // #endif
                         } else {
+                            // #ifndef H5
                             uni.removeTabBarBadge({
-                                index: 1
+                                index: 1,
+                                fail: () => {}
                             });
+                            // #endif
                         }
                     }).catch(res => {
                         // 获取未读消息数失败
@@ -230,6 +251,16 @@
 
     .uni-app--showleftwindow .hideOnPc {
         display: none !important;
+    }
+
+    /* H5 修复：uni-actionsheet 组件 mask 默认 display:none 但内容仍泄漏"取消"，仅在 mask 隐藏时隐藏内容 */
+    uni-actionsheet > .uni-actionsheet {
+        display: none !important;
+    }
+    /* 当 mask 显示时（uni.showActionSheet 触发），恢复 actionsheet 可见 */
+    uni-actionsheet > .uni-mask[style*="display: block"] ~ .uni-actionsheet,
+    uni-actionsheet > .uni-mask[style*="display: block"] + .uni-actionsheet {
+        display: block !important;
     }
 
     /* #endif */

@@ -15,7 +15,7 @@
 -->
 
 <template>
-    <view v-if="cardList.length > 0">
+    <view v-if="cardList && cardList.length > 0">
         <view class="bottomSendCradView" v-for="(cardItem, index) in cardList" :key="index"
             @click="openCardDetail(cardItem)">
 
@@ -136,7 +136,7 @@
             </view>
         </view>
 
-        <uni-popup ref="operatePopupRef" background-color="none" :is-mask-click="false" :safeArea="false"
+        <uni-popup ref="operatePopupRef" background-color="none" :is-mask-click="false" :safeArea="true"
             maskBackgroundColor="rgba(0, 0, 0, 0.7)">
             <view class="operateMenuView">
                 <top-background></top-background>
@@ -441,30 +441,37 @@
                     url: '/pages/carddetail/carddetail?cardId=' + item.cardId
                 })
             },
-            async openOperateMenu(cardItem, index) {
-                // console.log('====openOperateMenu====cardItem:' + JSON.stringify(cardItem))
-                const isFreeze = await verifySchool.verifySchoolIsFreeze();
-                if (isFreeze) {
-                    return;
-                }
+            async             openOperateMenu(cardItem, index) {
+				// console.log('====openOperateMenu====cardItem:' + JSON.stringify(cardItem))
+				const isFreeze = await verifySchool.verifySchoolIsFreeze();
+				if (isFreeze) {
+					return;
+				}
 
-                this.cardId = cardItem.cardId
-                this.schoolId = cardItem.schoolId
-                this.isTop = cardItem.isTop
-                this.isTopIdx = index
-                this.createStudentId = cardItem.studentId
-                this.shareImgUrl = cardItem.shareImageUrl
+				this.cardId = cardItem.cardId
+				this.schoolId = cardItem.schoolId
+				this.isTop = cardItem.isTop
+				this.isTopIdx = index
+				this.createStudentId = cardItem.studentId
+				this.shareImgUrl = cardItem.shareImageUrl
 
-                const userInfo = this.$storage.user.get();
-                const studentId = userInfo.studentId
-                this.loginStudentId = studentId
+				const userInfo = this.$storage.user.get();
+				const studentId = userInfo.studentId
+				this.loginStudentId = studentId
 
-                this.$refs.operatePopupRef.open('bottom')
-            },
+				// #ifdef H5
+				uni.hideTabBar()
+				// #endif
 
-            closeOperateMenu() {
-                this.$refs.operatePopupRef.close()
-            },
+				this.$refs.operatePopupRef.open('bottom')
+			},
+
+			closeOperateMenu() {
+				// #ifdef H5
+				uni.showTabBar()
+				// #endif
+				this.$refs.operatePopupRef.close()
+			},
             isTopClick(sign) {
                 uni.showLoading({
                     title: '提交中...',
@@ -1070,8 +1077,8 @@
     }
 
     .operateMenuIconView {
-        position: fixed;
-        top: -30rpx;
+        position: absolute;
+        top: -60rpx;
         left: 40%;
     }
 

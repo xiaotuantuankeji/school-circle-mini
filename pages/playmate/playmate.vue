@@ -270,7 +270,10 @@
                         // 导航栏高度(标题栏高度) = 胶囊高度 + (顶部距离 - 状态栏高度) * 2
                         that.navBarHeight = custom.height + (custom.top - that.statusBarHeight) * 2
                         // console.log("导航栏高度：" + that.navBarHeight)
+                        // #endif
 
+                        // #ifdef H5
+                        that.navBarHeight = uni.upx2px(88)
                         // #endif
                     }
                 });
@@ -565,6 +568,12 @@
     .navBarBox {
         padding-right: 240rpx;
     }
+
+    /* #ifdef H5 */
+    .navBarBox {
+        padding-top: 20rpx;
+    }
+    /* #endif */
 
     .navBar {
         display: flex;

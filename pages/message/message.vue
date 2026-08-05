@@ -1164,6 +1164,7 @@
                 const total = commentCount + likeCount + collectCount + playmateCommentCount + playmateMemberCount +
                     systemCount + listCount
                 console.log('refreshMenuCount_total:' + total)
+                // #ifndef H5
                 if (total > 0) {
                     const badgeText = total > 99 ? '99+' : total.toString();
                     uni.setTabBarBadge({
@@ -1175,6 +1176,7 @@
                         index: 1
                     });
                 }
+                // #endif
             },
         }
     }

@@ -20,7 +20,12 @@
 
         <view class="contentInsideView">
             <view class="topUserAvatarView">
+                <!-- #ifndef H5 -->
                 <button class="avatarBtn" open-type="chooseAvatar" @chooseavatar="avatarClick">
+                <!-- #endif -->
+                <!-- #ifdef H5 -->
+                <button class="avatarBtn" @click="chooseAvatarH5">
+                <!-- #endif -->
                     <view class="avatarImgIconView">
                         <image class="topUserAvatarImg" src="/static/img/logo/default-avatar.png"
                             v-if="loginAvatar==''">
@@ -41,10 +46,10 @@
                 <uni-list>
                     <uni-list-item showArrow title="昵称" :rightText="loginShowNikeName" link="navigateTo"
                         to="/package-user/my-nike/my-nike"></uni-list-item>
-                    <uni-list-item showArrow title="主页背景" :rightText="myBackground==''?'未设置':'已设置'" clickable="true"
+                    <uni-list-item showArrow title="主页背景" :rightText="myBackground==''?'未设置':'已设置'" clickable
                         @click="openBackgroundClick"></uni-list-item>
                     <uni-list-item showArrow title="学校" :rightText="loginSchoolName"></uni-list-item>
-                    <uni-list-item showArrow title="手机号" :rightText="loginMobilePhone==''?'未绑定':'已绑定'" clickable="true"
+                    <uni-list-item showArrow title="手机号" :rightText="loginMobilePhone==''?'未绑定':'已绑定'" clickable
                         @click="openPhoneClick"></uni-list-item>
                     <uni-list-item showArrow title="数字ID" :rightText="loginNumId"></uni-list-item>
                     <uni-list-item showArrow title="校园认证" :rightText="loginStatusText" link="navigateTo"
@@ -218,7 +223,7 @@
                         _this.loginStatus = status
 
                         const identityInfoRespVOList = userInfo.identityInfoRespVOList
-                        if (identityInfoRespVOList.length == 0) {
+                        if (!identityInfoRespVOList || identityInfoRespVOList.length == 0) {
                             _this.loginIdentityText = '未认证'
                             _this.loginIdentityIconUrl = ''
                         } else {
@@ -243,14 +248,41 @@
                     return;
                 }
 
-                const that = this
                 // console.log("选择头像:" + e.detail.avatarUrl)
                 const avatarUrl = e.detail.avatarUrl
+                this.uploadAvatar(avatarUrl)
+            },
+            // #ifdef H5
+            async chooseAvatarH5() {
+                const isFreeze = await verifySchool.verifySchoolIsFreeze();
+                if (isFreeze) {
+                    return;
+                }
+
+                uni.chooseImage({
+                    count: 1,
+                    sizeType: ['compressed'],
+                    sourceType: ['album', 'camera'],
+                    success: (res) => {
+                        this.uploadAvatar(res.tempFilePaths[0])
+                    },
+                    fail: () => {
+                        uni.showToast({
+                            icon: 'error',
+                            title: '选择头像失败',
+                            mask: true
+                        })
+                    }
+                })
+            },
+            // #endif
+            uploadAvatar(avatarUrl) {
                 uni.showLoading({
                     title: '处理中...',
                     mask: true
                 })
 
+                const that = this
                 const imagePromise = new Promise((resolve, reject) => {
                     uni.uploadFile({
                         url: this.$configData.file_url_server,

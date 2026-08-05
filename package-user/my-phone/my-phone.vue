@@ -30,7 +30,15 @@
                 <view class="middleTextDescribeView">获取您的手机号用于登录绑定</view>
             </view>
 
+            <!-- #ifndef H5 -->
             <button class="bottomBtn" open-type="getPhoneNumber" @getphonenumber="phoneClick">授权手机号</button>
+            <!-- #endif -->
+            <!-- #ifdef H5 -->
+            <view class="bottomBtnH5">
+                <input class="phoneInput" type="number" v-model="phoneInput" placeholder="请输入手机号" maxlength="11" />
+                <button class="saveBtn" @click="savePhoneH5">保存</button>
+            </view>
+            <!-- #endif -->
         </view>
 
     </view>
@@ -49,6 +57,9 @@
                 access_token: '',
 
                 mobilePhone: '',
+                // #ifdef H5
+                phoneInput: '',
+                // #endif
             }
         },
         onLoad(opt) {
@@ -118,6 +129,20 @@
                     })
                 }
             },
+            // #ifdef H5
+            savePhoneH5() {
+                if (!this.phoneInput || this.phoneInput.length !== 11) {
+                    uni.showToast({
+                        icon: 'error',
+                        title: '请输入正确的手机号',
+                        mask: true
+                    })
+                    return
+                }
+                this.mobilePhone = this.phoneInput
+                this.savePhone()
+            },
+            // #endif
             savePhone() {
                 uni.showLoading({
                     title: '处理中...',
@@ -210,4 +235,37 @@
         font-style: normal;
         text-transform: none;
     }
+
+    /* #ifdef H5 */
+    .bottomBtnH5 {
+        margin-top: 80rpx;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .phoneInput {
+        width: 100%;
+        height: 80rpx;
+        border: 2rpx solid #ddd;
+        border-radius: 20rpx;
+        padding: 0 30rpx;
+        font-size: 30rpx;
+        text-align: center;
+        background: #fff;
+    }
+
+    .saveBtn {
+        margin-top: 40rpx;
+        width: 100%;
+        background: #000000;
+        border-radius: 40rpx;
+        height: 80rpx;
+        line-height: 80rpx;
+        font-family: Alibaba PuHuiTi 3.0, Alibaba PuHuiTi 30;
+        font-weight: normal;
+        font-size: 31rpx;
+        color: #8CE8ED;
+    }
+    /* #endif */
 </style>

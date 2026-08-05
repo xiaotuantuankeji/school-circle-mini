@@ -37,8 +37,21 @@
 			this.getSystemInfo()
 		},
 		onShow() {
+			// #ifdef H5
+			// H5: 先检查登录状态，未登录则跳转，不执行后续逻辑
+			const token = this.$storage.token.get()
+			const userInfo = this.$storage.user.get()
+			if (!token || !userInfo || !userInfo.studentId) {
+				uni.redirectTo({ url: '/pages/login/login' })
+				return
+			}
+			this.saveLoginLog()
+			this.getPageImageData()
+			// #endif
+			// #ifndef H5
 			this.getUserInfo()
 			this.getPageImageData()
+			// #endif
 		},
 		methods: {
 			// 获取设备信息
@@ -51,6 +64,19 @@
 			},
 			getUserInfo() {
 				const that = this
+				// #ifdef H5
+				const token = that.$storage.token.get()
+				const userInfo = that.$storage.user.get()
+				if (token && userInfo && userInfo.studentId) {
+					that.saveLoginLog()
+				} else {
+					// 未登录，跳转到登录页
+					uni.redirectTo({
+						url: '/pages/login/login'
+					})
+				}
+				// #endif
+				// #ifndef H5
 				new Promise(function(resolve, reject) {
 					that.$wechatAuth.validateUser(resolve)
 				}).then(function(msg) {
@@ -59,6 +85,7 @@
 						that.saveLoginLog()
 					}
 				})
+				// #endif
 			},
 			showAd() {
 				this.countDown = 1; // 设置倒计时时间

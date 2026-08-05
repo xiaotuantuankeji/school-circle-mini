@@ -153,7 +153,12 @@ const api: Record<string, (params: any) => Promise<any>> = {
 	deleteCourseSchedule: (params: any) => request.del(`/school/mini/course/schedule/delete?id=${params.id}&studentId=${params.studentId}`, {}, { silent: true }),
 	importCourseFromTemplates: (params: any) => request.globalRequest('/school/mini/course/schedule/importFromTemplates', 'POST', `semesterId=${params.semesterId}&studentId=${params.studentId}&templateIds=${params.templateIds.join(',')}&dayOfWeek=${params.dayOfWeek}&startSection=${params.startSection}&endSection=${params.endSection}&weekStart=${params.weekStart}&weekEnd=${params.weekEnd}`, 'form', ''),
 	generateCourseShareCode: (params: any) => request.get('/school/mini/course/schedule/generateShareCode', params, { silent: true }),
-	importCourseByShareCode: (params: any) => request.globalRequest('/school/mini/course/schedule/importByShareCode', 'POST', `shareCode=${encodeURIComponent(params.shareCode)}&semesterId=${params.semesterId}&studentId=${params.studentId}`, 'form', '')
+	importCourseByShareCode: (params: any) => request.globalRequest('/school/mini/course/schedule/importByShareCode', 'POST', `shareCode=${encodeURIComponent(params.shareCode)}&semesterId=${params.semesterId}&studentId=${params.studentId}`, 'form', ''),
+
+	// H5 用户名密码登录
+	loginByPassword: (params: any) => request.globalRequest('/school/mini/loginByPassword', 'POST', params, 'json', ''),
+	// H5 用户名密码注册
+	registerByPassword: (params: any) => request.globalRequest('/school/mini/registerByPassword', 'POST', params, 'json', '')
 }
 
 export default api

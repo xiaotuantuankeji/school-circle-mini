@@ -120,7 +120,7 @@
                     </view> -->
                     <view class="memberAvatarView" v-if="playmateItem.totalNumber>7">
                         <view class="memberAvatarItemView"
-                            v-for="(memberItem, idx) in playmateItem.memberList.slice(0,6)" :key="idx"
+                            v-for="(memberItem, idx) in playmateItem.memberList.slice(0,6)" :key="'member-'+idx"
                             @click="toUserDetailClick(memberItem.studentId, memberItem.nikeNameId)">
                             <image :class="(idx==0)?'playmateMiddleCreateAvatarImg':'playmateMiddleAvatarImg'"
                                 :style="(idx==0)?'border: 2rpx solid ' + playmateItem.sortBackgroundColor:''"
@@ -130,7 +130,7 @@
                                 :src="memberItem.avatar" v-else></image>
                         </view>
                         <view class="memberAvatarItemView" v-for="idx in (6 - playmateItem.memberList.length)"
-                            :key="idx" v-if="playmateItem.memberList.length<6">
+                            :key="'placeholder-'+idx" v-if="playmateItem.memberList.length<6">
                             <view class="memberAddView" @click="joinMemberClick">
                                 <uni-icons type="plusempty" size="16" color="#FFFFFF"></uni-icons>
                             </view>
@@ -139,7 +139,7 @@
                     </view>
                     <view class="memberAvatarView" v-else>
                         <view class="memberAvatarItemView" v-for="(memberItem, idx) in playmateItem.memberList"
-                            :key="idx" @click="toUserDetailClick(memberItem.studentId, memberItem.nikeNameId)">
+                            :key="'member-'+idx" @click="toUserDetailClick(memberItem.studentId, memberItem.nikeNameId)">
                             <image :class="(idx==0)?'playmateMiddleCreateAvatarImg':'playmateMiddleAvatarImg'"
                                 :style="(idx==0)?'border: 2rpx solid ' + playmateItem.sortBackgroundColor:''"
                                 src="/static/img/logo/default-avatar.png" v-if="memberItem.avatar==''"></image>
@@ -148,7 +148,7 @@
                                 :src="memberItem.avatar" v-else></image>
                         </view>
                         <view class="memberAvatarItemView"
-                            v-for="idx in (playmateItem.totalNumber - playmateItem.memberList.length)" :key="idx">
+                            v-for="idx in (playmateItem.totalNumber - playmateItem.memberList.length)" :key="'placeholder-'+idx">
                             <view class="memberAddView" @click="joinMemberClick">
                                 <uni-icons type="plusempty" size="16" color="#FFFFFF"></uni-icons>
                             </view>
@@ -460,7 +460,7 @@
                 this.loginShowNikeName = userInfo.showNikeName
                 this.loginStudentSort = userInfo.sort
                 const identityInfoRespVOList = userInfo.identityInfoRespVOList
-                if (identityInfoRespVOList.length > 0) {
+                if (identityInfoRespVOList && identityInfoRespVOList.length > 0) {
                     if (identityInfoRespVOList[0].examineStatus == '2') {
                         this.loginIdentityIconUrl = identityInfoRespVOList[0].identityIconName
                     }

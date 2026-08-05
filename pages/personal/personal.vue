@@ -193,7 +193,7 @@
                 this.loginStudentSort = userInfo.sort
                 this.loginStatus = userInfo.status
                 const identityInfoRespVOList = userInfo.identityInfoRespVOList
-                if (identityInfoRespVOList.length > 0) {
+                if (identityInfoRespVOList && identityInfoRespVOList.length > 0) {
                     if (identityInfoRespVOList[0].examineStatus == '2') {
                         this.loginIdentityIconUrl = identityInfoRespVOList[0].identityIconName
                         this.loginIdentityIconText = identityInfoRespVOList[0].remark

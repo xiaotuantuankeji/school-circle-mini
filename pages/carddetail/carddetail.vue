@@ -274,7 +274,7 @@
             </view>
         </uni-popup>
 
-        <uni-popup ref="operatePopupRef" background-color="none" :is-mask-click="false" :safeAreaInsetBottom="false">
+        <uni-popup ref="operatePopupRef" background-color="none" :is-mask-click="false" :safeArea="true">
             <view class="operateMenuView">
                 <top-background></top-background>
 
@@ -452,13 +452,14 @@
             // 获取当前登录用户信息
             getLoginInfo() {
                 const userInfo = this.$storage.user.get();
+                if (!userInfo) return;
                 this.loginStudentId = userInfo.studentId
                 this.loginSchoolId = userInfo.schoolId
                 this.loginAvatar = userInfo.avatar
                 this.loginShowNikeName = userInfo.showNikeName
                 this.loginStudentSort = userInfo.sort
                 const identityInfoRespVOList = userInfo.identityInfoRespVOList
-                if (identityInfoRespVOList.length > 0) {
+                if (identityInfoRespVOList && identityInfoRespVOList.length > 0) {
                     if (identityInfoRespVOList[0].examineStatus == '2') {
                         this.loginIdentityIconUrl = identityInfoRespVOList[0].identityIconName
                     }
@@ -1063,9 +1064,15 @@
                     return;
                 }
                 console.log('====openOperateMenu====')
+                // #ifdef H5
+                uni.hideTabBar()
+                // #endif
                 this.$refs.operatePopupRef.open('bottom')
             },
             closeOperateMenu() {
+                // #ifdef H5
+                uni.showTabBar()
+                // #endif
                 this.$refs.operatePopupRef.close()
             },
             isTopClick(sign) {
@@ -1832,8 +1839,8 @@
     }
 
     .operateMenuIconView {
-        position: fixed;
-        top: -30rpx;
+        position: absolute;
+        top: -60rpx;
         left: 40%;
     }
 

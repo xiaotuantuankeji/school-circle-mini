@@ -92,7 +92,7 @@
             </view>
         </view>
 
-        <uni-popup ref="openSchoolRef" :safe-area="false">
+        <uni-popup ref="openSchoolRef" :safe-area="false" class="schoolPopup">
             <view class="popupView">
                 <view class="popupTitleView">
                     <!-- <view class="popupTitleText">个性签名</view> -->
@@ -268,7 +268,10 @@
                 // 导航栏高度(标题栏高度) = 胶囊高度 + (顶部距离 - 状态栏高度) * 2
                 that.navBarHeight = custom.height + (custom.top - that.statusBarHeight) * 2
                 // console.log("导航栏高度：" + that.navBarHeight)
+                // #endif
 
+                // #ifdef H5
+                that.navBarHeight = uni.upx2px(88)
                 // #endif
             },
             // 获取当前登录用户信息
@@ -459,14 +462,14 @@
 
                     if (this.isPullDownRefresh) {
                         this.cardList = []
-                        this.cardList = res.data
+                        this.cardList = res.data || []
                         this.isPullDownRefresh = false
                         uni.stopPullDownRefresh()
                     } else {
                         if (this.cardList.length == 0) {
-                            this.cardList = res.data
+                            this.cardList = res.data || []
                         } else {
-                            const data = res.data
+                            const data = res.data || []
                             for (let i = 0; i < data.length; i++) {
                                 const item = data[i]
                                 this.cardList.push(item)
@@ -570,6 +573,12 @@
         padding-right: 240rpx;
     }
 
+    /* #ifdef H5 */
+    .navBarBox {
+        padding-top: 20rpx;
+    }
+    /* #endif */
+
     .navBar {
         display: flex;
         flex-direction: row;
@@ -595,6 +604,13 @@
         z-index: 2;
         padding: 7.7rpx 42rpx 42rpx 40rpx;
     }
+
+    /* #ifdef H5 */
+    /* H5 没有状态栏/胶囊导航栏，contentInside 需要额外顶部间距 */
+    .contentInside {
+        padding-top: 30rpx;
+    }
+    /* #endif */
 
     .topSearchView {
         height: 80rpx;
@@ -710,6 +726,17 @@
         flex-direction: column;
         padding: 80rpx 30rpx 20rpx 30rpx;
     }
+
+    /* #ifdef H5 */
+    /* H5 tabBar 高度约 100rpx，弹窗需要提升层级并留出底部间距避免被遮挡 */
+    .schoolPopup .uni-popup {
+        z-index: 999;
+    }
+
+    .popupView {
+        padding-bottom: 120rpx;
+    }
+    /* #endif */
 
     .popupTitleView {
         display: flex;

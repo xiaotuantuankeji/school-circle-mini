@@ -50,13 +50,40 @@
             "style": {
                 "navigationBarTitleText": "正文"
             }
-        },
-        {
+        }
+        // #ifndef H5
+        ,{
             "path": "pages/chooseschool/chooseschool",
             "style": {
                 "navigationBarTitleText": "选择学校"
             }
         }
+        // #endif
+        // #ifdef H5
+        ,{
+            "path": "pages/chooseschool/chooseschool",
+            "style": {
+                "navigationBarTitleText": "",
+                "navigationStyle": "custom"
+            }
+        }
+        // #endif
+        // #ifdef H5
+        ,{
+            "path": "pages/login/login",
+            "style": {
+                "navigationBarTitleText": "",
+                "navigationStyle": "custom"
+            }
+        },
+        {
+            "path": "pages/register/register",
+            "style": {
+                "navigationBarTitleText": "",
+                "navigationStyle": "custom"
+            }
+        }
+        // #endif
     ],
     "subPackages": [{
             "root": "package-playmate",

@@ -31,7 +31,7 @@
     import topBackground from '../../components/top-background/top-background.vue'
     import cardItem from '../../components/card-item/card-item.vue'
     export default {
-        comments: {
+        components: {
             topBackground,
             cardItem
         },
@@ -92,7 +92,7 @@
                 this.$api.getSendCardList(param).then(res => {
                     // console.log('getSendCardList succes res:' + JSON.stringify(res))
 
-                    this.cardList = res.data
+                    this.cardList = res.data || []
 
                     uni.hideLoading()
                 }).catch(res => {
