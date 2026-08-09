@@ -164,11 +164,20 @@ sudo systemctl daemon-reload && sudo systemctl restart docker
 
 ## 在线演示
 
+### 管理平台
+
 | 项目 | 说明 |
 |------|------|
-| 演示地址 | `<your-demo-url>` |
-| 演示账号 | `demo` |
-| 演示密码 | `demo123` |
+| 演示地址 | `https://ky.xiaotuantuan.com.cn/schoolAdmin/` |
+| 演示账号 | `demoAdmin` |
+| 演示密码 | `demo@2026` |
+
+### 小程序 H5
+
+| 项目 | 说明 |
+|------|------|
+| 演示地址 | `https://ky.xiaotuantuan.com.cn/schoolWeb/` |
+| 演示账号 | 自行注册 |
 
 ## 许可证
 
