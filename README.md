@@ -57,100 +57,6 @@ school-circle-mini/
 └── main.js                # 主入口
 ```
 
-## 🚀 快速开始（后端服务部署）
-
-### 环境要求
-
-| 依赖 | 版本 |
-|------|------|
-| Docker | ≥ 20.10 |
-| Docker Compose | ≥ 2.0 |
-
-### 1. 一键启动
-
-```bash
-git clone <your-repo-url> && cd mdcgs
-
-# 复制配置
-mv .env-example .env
-
-# 启动服务
-docker-compose up -d
-```
-
-服务地址：`http://localhost:7788**` | 默认账号：**admin** / admin123
-
-### 2. 基础设施（如未准备好 MySQL/Redis）
-
-<details>
-<summary>📦 点击展开：快速创建 MySQL + Redis 容器</summary>
-
-```bash
-# MySQL
-docker run -d --name mysql -p 3306:3306 \
-  -e MYSQL_ROOT_PASSWORD=123456 \
-  -e MYSQL_ROOT_HOST=% mysql
-
-# 创建数据库
-docker exec -it mysql mysql -uroot -p123456 \
-  -e "CREATE DATABASE IF NOT EXISTS mdcgs DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
-
-# Redis
-docker run -d --name redis -p 6379:6379 \
-  --restart always redis:7-alpine \
-  redis-server --requirepass "123456" --appendonly yes
-```
-
-</details>
-
-<details>
-<summary>⚙️ 点击展开：.env 配置参考</summary>
-
-```bash
-# MySQL
-DB_HOST=<宿主机IP，不要127.0.0.1>
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=123456
-DB_NAME=mdcgs
-DATABASE_URL=mysql+pymysql://root:密码@宿主机IP:3306/mdcgs
-
-# Redis
-REDIS_URL=redis://<宿主机IP>:6379/0
-REDIS_PASSWORD=123456
-CELERY_BROKER_URL=redis://:密码@宿主机IP:6379/1
-CELERY_RESULT_BACKEND=redis://:密码@宿主机IP:6379/2
-
-# 安全（建议随机生成）
-SECRET_KEY=your-random-secret-key
-ENCRYPT_KEY=your-32-byte-encryption-key
-```
-
-</details>
-
-<details>
-<summary>🐳 点击展开：Docker 镜像加速</summary>
-
-```bash
-sudo mkdir -p /etc/docker && sudo tee /etc/docker/daemon.json <<EOF
-{
-  "registry-mirrors": [
-    "https://docker.xuanyuan.me",
-    "https://docker.1ms.run",
-    "https://docker.m.daocloud.io",
-    "https://docker.1panel.live",
-    "https://docker.hlmirror.com",
-    "https://hub.rat.dev",
-    "https://docker.mirrors.ustc.edu.cn",
-    "https://docker-0.unsee.tech"
-  ]
-}
-EOF
-sudo systemctl daemon-reload && sudo systemctl restart docker
-```
-
-</details>
-
 ## 配置说明
 
 项目开源后已移除敏感信息，使用项目前需要修改以下配置：
@@ -178,6 +84,10 @@ sudo systemctl daemon-reload && sudo systemctl restart docker
 |------|------|
 | 演示地址 | `https://ky.xiaotuantuan.com.cn/schoolWeb/` |
 | 演示账号 | 自行注册 |
+
+## 商用联系
+
+QQ群：1087277252
 
 ## 许可证
 
