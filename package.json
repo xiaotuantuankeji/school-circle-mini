@@ -2,12 +2,20 @@
 	"id": "school-wechat",
 	"name": "",
 	"version": "0.0.1",
-	"description": "团团校园圈",
+	"description": "校园社交/校园社区小程序：校园动态、校园圈子、课程表、玩伴匹配，基于 uni-app 的微信小程序开源项目",
 	"license": "Apache-2.0",
 	"keywords": [
-		"团团",
-		"school-wechat",
-		"校园圈"
+		"校园社交",
+		"校园社区",
+		"校园圈子",
+		"校园动态",
+		"课程表",
+		"玩伴匹配",
+		"微信小程序",
+		"uni-app",
+		"campus-social",
+		"campus-community",
+		"school-circle"
 	],
 	"scripts": {
 		"lint": "eslint --ext .js,.ts,.vue .",

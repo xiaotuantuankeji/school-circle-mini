@@ -1,13 +1,34 @@
-# 团团校园社交
+# 团团校园社交 · 校园社区小程序（School Circle）
 
-面向高校的校园圈子解决方案。支持校园动态、课程管理、玩伴匹配、身份认证等核心功能，帮助校园运营者快速搭建专属的校园社交平台。
+![license](https://img.shields.io/badge/license-Apache%202.0-blue)
+![platform](https://img.shields.io/badge/platform-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-green)
+![framework](https://img.shields.io/badge/framework-uni--app-brightgreen)
+![vue](https://img.shields.io/badge/Vue-2.0-4fc08d)
+![typescript](https://img.shields.io/badge/TypeScript-%E2%9C%93-3178c6)
+
+**English:** [README_EN.md](README_EN.md)
+
+**面向高校的校园社交 / 校园社区开源解决方案。** 支持校园动态、校园圈子、课程表管理、玩伴匹配、校园身份认证等核心功能，帮助校园运营者快速搭建专属的校园社交平台（校园 SNS）。
+
+> 全套方案包含：本前端（微信小程序 + H5）+ [后端服务（Spring Boot）](https://github.com/xiaotuantuankeji/school-circle-server)（Gitee 镜像：[school-circle-server](https://gitee.com/nanjing-xiaotuantuan-group/school-circle-server)）。
+
+## 功能特性
+
+- 🏫 **校园动态 / 校园圈子**：发布动态、浏览校园新鲜事、校园广场
+- 📚 **课程表管理**：按学期维护课程，支持周次/节次视图
+- 🤝 **玩伴匹配**：基于兴趣与标签的校园社交匹配功能
+- 🎓 **校园身份认证**：学生身份认证与审核流程
+- 📱 **多端运行**：一套代码，同时编译为微信小程序、H5
+- 🧩 **组件化开发**：基于 uni-app 的组件化架构，易于扩展二次开发
 
 ## 技术栈
 
-- **框架**: uni-app (Vue 2 + TypeScript)
-- **平台**: 微信小程序
-- **构建工具**: HBuilderX / Vue CLI
-- **代码规范**: ESLint + Prettier
+| 分类 | 技术 |
+|------|------|
+| 框架 | uni-app（Vue 2 + TypeScript） |
+| 平台 | 微信小程序 / H5 |
+| 构建工具 | HBuilderX / Vue CLI |
+| 代码规范 | ESLint + Prettier |
 
 ## 快速上手
 
@@ -85,6 +106,17 @@ school-circle-mini/
 | 演示地址 | `https://ky.xiaotuantuan.com.cn/schoolWeb/` |
 | 演示账号 | 自行注册 |
 
+## 适用场景
+
+- 高校学生会 / 校园社区运营团队快速搭建校园社交平台
+- 需要课程表、校园动态、校园认证一体化方案的技术团队
+- uni-app 校园类小程序二次开发的学习参考项目
+
+## 相关仓库
+
+- 前端（本仓库）：[school-circle-mini](https://github.com/xiaotuantuankeji/school-circle-mini)
+- 后端：[school-circle-server](https://github.com/xiaotuantuankeji/school-circle-server)（Gitee：[镜像](https://gitee.com/nanjing-xiaotuantuan-group/school-circle-server)）
+
 ## 商用联系
 
 QQ群：1087277252
@@ -94,4 +126,3 @@ QQ群：1087277252
 本项目基于 [Apache License 2.0](LICENSE) 开源。
 
 Copyright &copy; 2026 南京校团团科技有限公司
-

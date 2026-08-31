@@ -1,7 +1,7 @@
 {
     "name" : "school-circle-mini",
     "appid" : "__UNI__0BFD627",
-    "description" : "",
+    "description" : "团团校园社交：校园社区/校园圈子微信小程序，支持校园动态、课程表、玩伴匹配与身份认证",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
