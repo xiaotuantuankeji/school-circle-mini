@@ -32,6 +32,14 @@ npm run lint
 npm run typecheck
 ```
 
+## Viewing the H5 Demo on a PC
+
+The H5 pages are designed for mobile viewports, so they will look stretched and broken in a desktop browser. Use the browser's **device emulation / responsive mode** to view them as on a phone:
+
+- **Chrome / Edge:** press `F12` → (optional) adjust the DevTools dock position via the **⋮ menu → Dock side** (dock right / dock bottom / undock into a separate window; shortcut `Ctrl+Shift+D`, `Cmd+Shift+D` on Mac) → click the device toolbar icon (or `Ctrl+Shift+M`; `Cmd+Shift+M` on Mac) → pick a phone model (e.g. iPhone 12/13) or set the width to `375px` → refresh the page.
+- **360 Secure / 360 Speed Browser:** switch to **Speed mode** (Chromium engine) via the address bar toggle first — device emulation is unavailable in compatibility mode → press `F12` → click the device toolbar icon, or press `Ctrl+Shift+M` → pick a phone model or set the width to `375px` → refresh.
+- **Safari:** Safari → Settings → Advanced → enable "Show Develop menu in menu bar", then Develop → Enter Responsive Design Mode (`Option+Cmd+R`) → pick a device → refresh.
+
 ## Related Repos
 
 - Frontend (this repo): [school-circle-mini](https://github.com/xiaotuantuankeji/school-circle-mini)
