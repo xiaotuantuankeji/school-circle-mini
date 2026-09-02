@@ -79,6 +79,8 @@
                 </view>
             </view>
 
+            <!-- #ifndef H5 -->
+            <!-- H5端不支持uni.chooseLocation，隐藏选择位置入口 -->
             <view class="sendCardLocationView">
                 <image class="sendCardLocationImg" src="/static/img/other/location.png"></image>
                 <view class="sendCardLocationText">{{(addressData.name=='')?'位置':addressData.name}}</view>
@@ -87,6 +89,7 @@
                     <uni-icons type="right"></uni-icons>
                 </view>
             </view>
+            <!-- #endif -->
 
             <view class="sendCardButtonView">
                 <button class="sendCardButton" @click="submitCard">发布帖子</button>
@@ -580,7 +583,8 @@
                     videoContent.exitFullScreen()
                 }
             },
-            // 打开地图选择位置
+            // #ifndef H5
+            // 打开地图选择位置（H5端不支持uni.chooseLocation，该方法仅在非H5端编译）
             async chooseLocation() {
                 const isFreeze = await verifySchool.verifySchoolIsFreeze();
                 if (isFreeze) {
@@ -602,6 +606,7 @@
                     }
                 });
             },
+            // #endif
             async selectPartition() {
                 const isFreeze = await verifySchool.verifySchoolIsFreeze();
                 if (isFreeze) {

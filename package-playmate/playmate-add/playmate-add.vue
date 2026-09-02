@@ -77,6 +77,8 @@
                     <uni-icons type="forward" color="#858585"></uni-icons>
                 </view>
             </view>
+            <!-- #ifndef H5 -->
+            <!-- H5端不支持uni.chooseLocation，隐藏活动地点区域（后端已确认name值可为空） -->
             <view class="playmateAddBottomView" :style="addressData.name==''?'border-bottom: 2rpx solid #F3F3F1;':''">
                 <view class="playmateAddBottomUserNumView">
                     <image style="width: 33rpx;height: 39rpx;" src="/static/img/other/location.png"></image>
@@ -94,6 +96,7 @@
                 v-if="addressData.name!=''">
                 <input type="text" v-model="addressInputVal" placeholder="如有需要，请填写精确地址" />
             </view>
+            <!-- #endif -->
             <view class="playmateAddBottomView" :style="showDateTimeVal==''?'border-bottom: 2rpx solid #F3F3F1;':''">
                 <view class="playmateAddBottomUserNumView">
                     <image style="width: 33rpx;height: 33rpx;" src="/static/img/other/time.png"></image>
@@ -476,6 +479,8 @@
                 // console.log('e:' + e)
                 this.showDateTimeVal = e[0] + ' 至 ' + e[1]
             },
+            // #ifndef H5
+            // 打开地图选择位置（H5端不支持uni.chooseLocation，该方法仅在非H5端编译）
             async chooseLocationClick() {
                 const isFreeze = await verifySchool.verifySchoolIsFreeze();
                 if (isFreeze) {
@@ -498,6 +503,7 @@
                     }
                 });
             },
+            // #endif
             checkContent(content) {
                 const _this = this
                 return new Promise((resolve, reject) => {
@@ -600,6 +606,8 @@
                     return
                 }
 
+                // #ifndef H5
+                // H5端不支持uni.chooseLocation且地点可选（name值可为空），仅在非H5端校验
                 if (this.addressData.name == '') {
                     uni.showToast({
                         title: '请选择活动地点',
@@ -607,6 +615,7 @@
                     })
                     return
                 }
+                // #endif
 
                 if (this.showDateTimeVal == '') {
                     uni.showToast({
@@ -694,9 +703,12 @@
                 //     }
                 // }
 
+                // #ifndef H5
+                // 追加精确地址到地点名称（仅非H5端地图选点后可补充精确地址）
                 if (this.addressInputVal != '') {
                     this.addressData.name = this.addressData.name + '#' + this.addressInputVal
                 }
+                // #endif
 
                 const joinType = parseInt(this.userJoinIndex) + 1
 
