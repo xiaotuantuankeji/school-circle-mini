@@ -425,6 +425,22 @@
                 }
 
                 const _this = this
+                // #ifdef H5
+                // H5端不支持 uni.chooseMedia，改用 uni.chooseImage
+                uni.chooseImage({
+                    count: 9 - _this.imageList.length,
+                    sizeType: ['original', 'compressed'],
+                    sourceType: ['album'],
+                    success(res) {
+                        const data = res.tempFiles
+                        for (let i = 0; i < data.length; i++) {
+                            const item = data[i]
+                            _this.imageList.push(item.path)
+                        }
+                    }
+                })
+                // #endif
+                // #ifndef H5
                 uni.chooseMedia({
                     count: 9 - _this.imageList.length,
                     mediaType: ['image'],
@@ -440,6 +456,7 @@
                         }
                     }
                 })
+                // #endif
             },
             // 预览图片
             previewImage(index) {

@@ -223,6 +223,20 @@
                 }
 
                 const _this = this
+                // #ifdef H5
+                // H5端不支持 uni.chooseMedia，改用 uni.chooseImage
+                uni.chooseImage({
+                    count: 1,
+                    sizeType: ['original', 'compressed'],
+                    sourceType: ['album'],
+                    success(res) {
+                        // console.log(res.tempFiles)
+                        const tempFilePath = res.tempFiles[0].path
+                        _this.uploadImgPath = tempFilePath
+                    }
+                })
+                // #endif
+                // #ifndef H5
                 uni.chooseMedia({
                     count: 1,
                     mediaType: ['image'],
@@ -235,6 +249,7 @@
                         _this.uploadImgPath = tempFilePath
                     }
                 })
+                // #endif
             },
             async submitIdentityVerify() {
                 const isFreeze = await verifySchool.verifySchoolIsFreeze();
